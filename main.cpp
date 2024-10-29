@@ -6,8 +6,8 @@ struct NodoListaSE {
     NodoListaSE* sgte;
 };
 
-void insertarNodoAlFinal(NodoListaSE*& lista, int dato);
 void insertarNodoAlPrincipio(NodoListaSE*& lista, int dato);
+void insertarNodoAlFinal(NodoListaSE*& lista, int dato);
 void mostrarLista(NodoListaSE* lista);
 void borrarPrimero(NodoListaSE*& lista);
 void borrarUltimo(NodoListaSE*& lista);
@@ -16,12 +16,12 @@ int main() {
     NodoListaSE* lista = nullptr;
 
     cout << " ### Carga inicial de la lista ###" << endl << endl;
+    insertarNodoAlPrincipio(lista, 98);
+    insertarNodoAlPrincipio(lista, 97);
+    insertarNodoAlPrincipio(lista, 96);
     insertarNodoAlFinal(lista, 121);
     insertarNodoAlFinal(lista, 122);
     insertarNodoAlFinal(lista, 123);
-    insertarNodoAlPrincipio(lista, 98);
-    insertarNodoAlPrincipio(lista, 99);
-    insertarNodoAlPrincipio(lista, 96);
     mostrarLista(lista);
 
     cout << "Borro primer elemento de la lista..." << endl;
@@ -73,15 +73,15 @@ void borrarPrimero(NodoListaSE*& lista) {
 }
 
 void borrarUltimo(NodoListaSE*& lista) {
-    NodoListaSE* NodoABorrar = lista;
+    NodoListaSE* ultimo = lista;
     NodoListaSE* anterior = nullptr;
     if(lista!=nullptr) {
-        while (NodoABorrar->sgte) {
-            anterior = NodoABorrar;
-            NodoABorrar = NodoABorrar->sgte;
+        while (ultimo->sgte) {
+            anterior = ultimo;
+            ultimo = ultimo->sgte;
         }
-        if(NodoABorrar != lista) {
-            delete NodoABorrar;
+        if(ultimo != lista) {
+            delete ultimo;
             anterior->sgte = nullptr;
         }
         else
