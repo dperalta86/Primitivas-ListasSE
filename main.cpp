@@ -3,7 +3,7 @@ using namespace std;
 
 struct NodoListaSE {
     int info;
-    NodoListaSE* sgte;
+    NodoListaSE* sgte = nullptr;
 };
 
 void insertarNodoAlPrincipio(NodoListaSE*& lista, int dato);
